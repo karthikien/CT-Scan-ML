@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Risk Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hdstyles.css') }}">
+    <script>
+        // Add a class to the body when switching pages
+document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.add('page-transition');
+});
+
+window.addEventListener('load', function () {
+    // Remove the transition class after the page has loaded
+    document.body.classList.remove('page-transition');
+});
+
+// Add a class to the body when navigating to a new page
+window.addEventListener('beforeunload', function () {
+    document.body.classList.add('page-transition');
+});
+
+    </script>
+</head>
+<body class="page-transition">
+    <div class="container"> 
+        <h1>Heart Risk Result</h1>
+        <!-- Apply styles and blinking animation based on risk level -->
+        <p><h2 class="{% if risk_level == 'You have a Diseased Heart!!' %} blinking-red {% else %} blinking-green {% endif %}">{{ risk_level }}</h2></p>
+
+
+        <div class="buttons"> 
+            <span class="hand-emoji">👉🏼</span> 
+            <button class="check-button"onclick="location.href='/riskfactor'">Check Risk Level</button>
+            <br><br>
+            <button onclick="goBack()">Back</button>
+            <button onclick="location.href='/'">Home</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html

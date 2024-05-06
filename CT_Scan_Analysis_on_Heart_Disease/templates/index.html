@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hdstyles.css') }}">
+    <script>
+        // Add a class to the body when switching pages
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('page-transition');
+        });
+
+        window.addEventListener('load', function () {
+            // Remove the transition class after the page has loaded
+            document.body.classList.remove('page-transition');
+        });
+
+        // Add a class to the body when navigating to a new page
+        window.addEventListener('beforeunload', function () {
+            document.body.classList.add('page-transition');
+        });
+    </script>
+    
+    <title>Heart Disease Detection using CT Scan Images</title>
+</head>
+<body class="page-active">
+    <div class="container">
+        <!-- Header -->
+        <h1>Heart Disease Detection using CT Scan Images</h1>
+        <h2>Upload an Image</h2>
+        <form action="/detect" method="post" enctype="multipart/form-data">
+            <label class="file-upload-button">Choose File
+                <input type="file" name="image_file" accept=".png, .jpg, .jpeg" onchange="previewImage(this);">
+            </label>
+            <button type="submit" class="upload-button" name="upload" required>Upload</button>
+        </form>
+
+        <div id="image-preview"></div>
+    </div>
+
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var previewContainer = document.getElementById("image-preview");
+                    previewContainer.innerHTML = "";
+
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = "300px";
+                    previewContainer.appendChild(img);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

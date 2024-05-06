@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hdstyles.css') }}">
+    <script>
+       // Add a class to the body when switching pages
+document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.add('page-transition');
+});
+
+window.addEventListener('load', function () {
+    // Remove the transition class after the page has loaded
+    document.body.classList.remove('page-transition');
+});
+
+// Add a class to the body when navigating to a new page
+window.addEventListener('beforeunload', function () {
+    document.body.classList.add('page-transition');
+});
+
+    </script>
+</head>
+<body class="page-transition">
+    <div class="container">
+        <h1>Heart Risk</h1>
+        <form action="/result" method="POST" id="riskForm" onsubmit="return validateForm();">
+            <label for="Age">Age:</label>
+            <input type="number" id="Age" name="Age" required><span class="error-message" id="ageError"></span><br><br>
+            <label for="Calcium_score">Calcium Score:</label>
+            <input type="number" id="Calcium_score" name="Calcium_score" required><span class="error-message" id="calciumError"></span><br><br>
+            <label for="Epicardial_Tissue_Volume">Epicardial Tissue Volume:</label>
+            <input type="number" id="Epicardial_Tissue_Volume" name="Epicardial_Tissue_Volume" required><span class="error-message" id="epicardialError"></span><br><br>
+            <label for="Pericardial_Tissue_Volume">Pericardial Tissue Volume:</label>
+            <input type="number" id="Pericardial_Tissue_Volume" name="Pericardial_Tissue_Volume" required><span class="error-message" id="pericardialError"></span><br><br>
+            <label for="Sum_of_Cardiac_Fats">Sum of Cardiac Fats:</label>
+            <input type="number" id="Sum_of_Cardiac_Fats" name="Sum_of_Cardiac_Fats" required><span class="error-message" id="cardiacFatsError"></span><br><br>
+            <input type="submit" value="Calculate Risk" class="center-button">
+
+        </form>
+        <p id="riskResult"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var age = document.getElementById("Age").value;
+            var calciumScore = document.getElementById("Calcium_score").value;
+            var epicardialVolume = document.getElementById("Epicardial_Tissue_Volume").value;
+            var pericardialVolume = document.getElementById("Pericardial_Tissue_Volume").value;
+            var cardiacFats = document.getElementById("Sum_of_Cardiac_Fats").value;
+
+            var ageError = document.getElementById("ageError");
+            var calciumError = document.getElementById("calciumError");
+            var epicardialError = document.getElementById("epicardialError");
+            var pericardialError = document.getElementById("pericardialError");
+            var cardiacFatsError = document.getElementById("cardiacFatsError");
+
+            var isValid = true;
+
+            // Validate Age
+            if (age < 0 || age > 130) {
+                ageError.textContent = "Age must be between 0 and 130";
+                isValid = false;
+            } else {
+                ageError.textContent = "";
+            }
+
+            // Validate Calcium Score
+            if (calciumScore < 0 || calciumScore > 2000) {
+                calciumError.textContent = "Calcium Score must be between 0 and 2000";
+                isValid = false;
+            } else {
+                calciumError.textContent = "";
+            }
+
+            // Validate Epicardial Tissue Volume
+            if (epicardialVolume < 0 || epicardialVolume > 200) {
+                epicardialError.textContent = "Epicardial Tissue Volume must be between 0 and 200";
+                isValid = false;
+            } else {
+                epicardialError.textContent = "";
+            }
+
+            // Validate Pericardial Tissue Volume
+            if (pericardialVolume < 0 || pericardialVolume > 140) {
+                pericardialError.textContent = "Pericardial Tissue Volume must be between 0 and 140";
+                isValid = false;
+            } else {
+                pericardialError.textContent = "";
+            }
+
+            // Validate Sum of Cardiac Fats
+            if (cardiacFats < 0 || cardiacFats > 300) {
+                cardiacFatsError.textContent = "Sum of Cardiac Fats must be between 0 and 300";
+                isValid = false;
+            } else {
+                cardiacFatsError.textContent = "";
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+/* Add styles for body */
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    background-image: url('/static/images/1.png');
+    transition: transform 0.3s ease, transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Define styles for a page transition effect */
+.page-transition {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+/* Define styles for the active page */
+.page-active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Add animation for smoother transition */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Add styles for container */
+.container {
+    max-width: 400px;
+    opacity: 0.90;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #333, #000);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: fade-in 0.5s ease;
+}
+
+/* Center align h1 */
+.container h1 { 
+    text-align: center;
+}
+
+/* Add styles for form */
+form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Add styles for labels and inputs */
+label, input {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input[type="number"] {
+    width: calc(100% - 220px);
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+/* Add styles for submit button */
+input[type="submit"] {
+    padding: 8px 15px;
+    margin: 0 5px;
+    background-color: #86100a;
+    color: #ffffff;
+    border: 2px solid #86100a; /* Set button border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer;
+    transition: all 0.3s; /* Add transition for smooth hover effect */
+}
+
+input[type="submit"]:hover {
+    background-color: #ff0505; /* Darker shade on hover */
+    border-color: #ff0505; /* Darker border on hover */
+    transform: translateY(-2px); /* Move the button up slightly on hover */
+}
+
+/* Add styles for error message */
+.error-message {
+    color: #ff0000;
+    margin-top: 5px;
+}
+
+/* Add styles for buttons container */
+.buttons {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+/* Add styles for buttons */
+.container button,
+.check-button,
+.buttons button,
+.upload-button,
+.file-upload-button,
+input[type="submit"] {
+    padding: 8px 15px;
+    margin: 0 5px;
+    background-color: #86100a;
+    color: #ffffff;
+    border: 2px solid #86100a; /* Set button border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer;
+    transition: all 0.3s; /* Add transition for smooth hover effect */
+}
+
+/* On hover, increase depth and darken color */
+.container button:hover,
+.check-button:hover,
+.buttons button:hover,
+.upload-button:hover,
+.file-upload-button:hover,
+input[type="submit"]:hover {
+    background-color: #ff0505; /* Darker shade on hover */
+    border-color: #ff0505; /* Darker border on hover */
+    transform: translateY(-2px); /* Move the button up slightly on hover */
+}
+
+/* Add styles for image preview container */
+.image-preview-container {
+    margin-top: 50px;
+}
+
+.image-preview-container h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Add styles for image preview */
+#image-preview {
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid #000000;
+    display: flex;
+}
+
+/* Add styles for upload button */
+.upload-button {
+    padding: 8px 15px;
+    margin: 0 5px; 
+    background-color: #86100a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #ff0505;
+}
+
+/* Add styles for file upload button */
+.file-upload-button {
+    width: calc(100% - 220px);
+    padding: 8px 15px;
+    margin: 20px 5px; 
+    background-color: #86100a;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.file-upload-button:hover {
+    background-color: #ff0505;
+}
+
+/* Add styles for file input in file upload button */
+.file-upload-button input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Add styles for circular check button */
+.check-button {
+    padding: 25px 50px ; 
+    font-size: 16px;
+    border: 2px solid #86100a;
+    border-radius: 50%; /* Make the button circular */
+    display: inline-block;
+    background-color: #86100a;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.check-button:hover {
+    background-color: #ff0505;
+    border-color: #ff0505;
+    transform: translateY(-2px);
+}
+
+.check-button:hover {
+    background-color: #ff0505;
+    border-color: #ff0505;
+    transform: translateY(-2px);
+}
+
+/* Define blinking animation for red */
+@keyframes blinking-red {
+    0% { color: red; }
+    50% { color: white; }
+    100% { color: red; }
+}
+
+/* Define blinking animation for green */
+@keyframes blinking-green {
+    0% { color: green; }
+    50% { color: white; }
+    100% { color: green; }
+}
+
+/* Apply blinking animation to red text */
+.blinking-red {
+    animation: blinking-red 1s infinite;
+}
+
+/* Apply blinking animation to green text */
+.blinking-green {
+    animation: blinking-green 1s infinite;
+}
+
+/* Increase size of hand emoji */
+.hand-emoji {
+    font-size: 5em;
+    vertical-align: middle;
+}
+
+/* Turn off hover effect for emoji */
+.hand-emoji:hover {
+    color: inherit;
+}
+
+.center-button {
+    display: block;
+    margin: 0 auto; /* Center-align the button */
+    text-align: center; /* Center-align the text inside the button */
+}
